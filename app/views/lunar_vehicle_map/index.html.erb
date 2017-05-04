@@ -8,16 +8,22 @@
     <%= select_tag :vehicle_id, options_for_select(@vehicle_ids.map { |vehicle_id| [vehicle_id, vehicle_id]}), {:prompt => "- Select Vehicle -", class: 'form-control'} %>
   </div>
   <div class="col-md-3 margin-bottom-25">
-    <%= text_field :vehicle, :lat, class: 'form-control' %>
+    <%= number_field :vehicle, :lat, class: 'form-control', required: true %>
   </div>
   <div class="col-md-3 margin-bottom-25">
-    <%= text_field :vehicle, :lng, class: 'form-control' %>
+    <%= number_field :vehicle, :lng, class: 'form-control', required: true %>
   </div>
   <div class="col-md-3 margin-bottom-25">
     <%= submit_tag 'Locate', {class: 'btn btn-primary form-control', id: 'locate' } %>
   </div>
+  <%= hidden_field_tag :vehicle_name %>
 </div>
-
+<div class="row">
+  <div class="col-md-12 margin-bottom-25">
+    <label>Distance from Apollo 11: </label>
+    <span id="distance"></span>
+  </div>
+</div>
 
 <div id="map" class='margin-bottom-25'></div>
 

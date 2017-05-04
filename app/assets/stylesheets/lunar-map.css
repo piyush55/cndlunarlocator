@@ -15,3 +15,8 @@
 #map {
   height: 100%;
 }
+ #coords {
+  background-color: black;
+  color: white;
+  padding: 5px;
+}
