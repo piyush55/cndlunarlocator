@@ -108,6 +108,8 @@ $(document).on('change', '#vehicle_id', function(){
 $(document).on('click', '#locate', function() {
   options = { lat: $('#vehicle_lat').val(), lng: $('#vehicle_lng').val(), title: $('#vehicle_name').val() };
   initMap();
-  map.data.addGeoJson(coords(options));
+  setTimeout(function() {
+    map.data.addGeoJson(coords(options));
+  }, 500);
   calculateDistance(options)
 });
