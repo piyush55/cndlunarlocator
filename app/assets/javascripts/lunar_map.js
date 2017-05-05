@@ -95,13 +95,14 @@ function calculateDistance(options) {
 
 
 $(document).on('change', '#vehicle_id', function(){
-  $.get("/lunar_vehicle_map/".concat(this.value), function(data) {
+    $.get("/lunar_vehicle_map/".concat(this.value), function(data) {
     $('#vehicle_lat').val(data.lat);
     $('#vehicle_lng').val(data.long);
     $('#vehicle_name').val(data.name);
   })
   .fail(function(xhr, textStatus, error) {
-    $(".message").html(error).addClass('error').fadeOut(2500);
+    $('#vehicle_lat').val(''), $('#vehicle_lng').val(''), $('#vehicle_name').val('');
+    $(".message").show().html(error).addClass('error').fadeOut(2500);
   })
 });
 
