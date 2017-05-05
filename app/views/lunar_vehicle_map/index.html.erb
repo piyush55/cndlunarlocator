@@ -6,17 +6,22 @@
 <div class="row">
   <div class="col-md-3 margin-bottom-25">
     <%= select_tag :vehicle_id, options_for_select(@vehicle_ids.map { |vehicle_id| [vehicle_id, vehicle_id]}), {:prompt => "- Select Vehicle -", class: 'form-control'} %>
+    <div class="row">
+      <div class='col-md-12 message margin-top-5'></div>
+    </div>
   </div>
   <div class="col-md-3 margin-bottom-25">
-    <%= number_field :vehicle, :lat, class: 'form-control', required: true %>
+    <%= number_field :vehicle, :lat, class: 'form-control', required: true, placeholder: 'Latitude' %>
   </div>
   <div class="col-md-3 margin-bottom-25">
-    <%= number_field :vehicle, :lng, class: 'form-control', required: true %>
+    <%= number_field :vehicle, :lng, class: 'form-control', required: true, placeholder: 'Longitude' %>
   </div>
   <div class="col-md-3 margin-bottom-25">
     <%= submit_tag 'Locate', {class: 'btn btn-primary form-control', id: 'locate' } %>
   </div>
   <%= hidden_field_tag :vehicle_name %>
+</div>
+<div class="row">
 </div>
 <div class="row">
   <div class="col-md-12 margin-bottom-25">

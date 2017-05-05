@@ -7,6 +7,8 @@ class LunarVehicleMapController < ApplicationController
   def show
     vehicle = fetch_vehicle params[:id]
     render json: vehicle.to_json
+    rescue Exception => e
+      render json: { error: e.response.message }, status: e.response.code
   end
 
   private

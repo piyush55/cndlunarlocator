@@ -12,6 +12,9 @@
 .margin-top-20 {
   margin-top: 20px;
 }
+.margin-top-5 {
+  margin-top: 5px;
+}
 #map {
   height: 100%;
 }
@@ -19,4 +22,7 @@
   background-color: black;
   color: white;
   padding: 5px;
+}
+.error {
+  color: red;
 }

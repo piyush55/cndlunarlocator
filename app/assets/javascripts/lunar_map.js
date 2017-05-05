@@ -1,6 +1,7 @@
 var map;
-var defaultOptions = { lat: 0.681400, lng: 23.460550, title: 'Apollo 11' };
-var RADIUS = 1738000;
+var DEFAULT_OPTIONS = { lat: 0.681400, lng: 23.460550, title: 'Apollo 11' };
+var RADIUS = 1738000; //in meter
+var METER_TO_MILES = 0.000621371;
 
 function initMap() {
    map = new google.maps.Map(document.getElementById('map'), {
@@ -32,7 +33,7 @@ function initMap() {
   map.mapTypes.set('moon', moonMapType);
   map.setMapTypeId('moon');
   setStyle();
-  map.data.addGeoJson(coords(defaultOptions));
+  map.data.addGeoJson(coords(DEFAULT_OPTIONS));
 }
 
 function coords(options) {
@@ -78,14 +79,17 @@ function getNormalizedCoord(coord, zoom) {
   return {x: x, y: y};
 }
 
-// Used Spherical Law of Cosines
-
+// Used Spherical Law of Cosines                
 function calculateDistance(options) {
-  var R = RADIUS/1000; // km
-  var d = Math.acos(Math.sin(defaultOptions.lat)*Math.sin(options.lat) + 
-                  Math.cos(defaultOptions.lat)*Math.cos(options.lat) *
-                  Math.cos(options.lng-defaultOptions.lng)) * R; // in km
-      d = d * 0.6213; //in miles
+  var ct = Math.PI/180.0;
+  lat1 = DEFAULT_OPTIONS.lat * ct;
+  lng1 = DEFAULT_OPTIONS.lng * ct;
+  lat2 = options.lat * ct;
+  lng2 = options.lng * ct;
+  var R = RADIUS * METER_TO_MILES; // in miles
+  var d = Math.acos(Math.sin(lat1)*Math.sin(lat2) + 
+                  Math.cos(lat1)*Math.cos(lat2) *
+                  Math.cos(lng2-lng1)) * R; // in miles
   $("#distance").text(d.toFixed(2).concat(' miles'));
 }
 
@@ -96,8 +100,8 @@ $(document).on('change', '#vehicle_id', function(){
     $('#vehicle_lng').val(data.long);
     $('#vehicle_name').val(data.name);
   })
-  .fail(function() {
-    console.log( "error" );
+  .fail(function(xhr, textStatus, error) {
+    $(".message").html(error).addClass('error').fadeOut(2500);
   })
 });
 
