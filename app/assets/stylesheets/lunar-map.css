@@ -1,4 +1,4 @@
- html, body {
+html, body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -17,11 +17,6 @@
 }
 #map {
   height: 100%;
-}
- #coords {
-  background-color: black;
-  color: white;
-  padding: 5px;
 }
 .error {
   color: red;

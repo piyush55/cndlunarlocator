@@ -12,7 +12,8 @@
  *
  *= require_tree .
  *= require_self
+
+  *= require bootstrap
+  *= require lunar-map
  */
 
-*= require bootstrap
-*= require lunar-map
