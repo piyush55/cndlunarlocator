@@ -1,24 +1,40 @@
-# README
+# Lunar Map
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app allows user to view position of selected vehicle on Lunar map.
+Also it will calcuate vehicle distance from `Apollo 11`
 
-Things you may want to cover:
+## Environment
 
-* Ruby version
+* Ruby 2.3.1
+* Rails 5.1.0
+* Rspec 3.5
+* Google Map Api
 
-* System dependencies
+## Configuration
 
-* Configuration
+### Clone the repo at local machine:
+  * git clone https://github.com/piyush55/cndlunarlocator.git
 
-* Database creation
+### Setup
 
-* Database initialization
+Install bundler and run `bundle install`:
 
-* How to run the test suite
+```bash
+gem install bundler && bundle
+```
+### How to run the application
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+ rails s
+```
+### How to run the test suite
 
-* Deployment instructions
+```bash
+ rspec
+```
 
-* ...
+## Deployment instruction
+
+```bash
+ git push heroku master
+```
