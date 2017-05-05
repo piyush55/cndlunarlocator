@@ -8,7 +8,7 @@ class LunarVehicleMapController < ApplicationController
     render json: { error: 'Not Found' }, status: 404 and return unless Vehicle::IDS.include? params[:id]
     vehicle = fetch_vehicle params[:id]
     render json: vehicle.to_json
-    rescue Exception => e
+  rescue Exception => e
       render json: { error: e.response.message }, status: e.response.code
   end
 
